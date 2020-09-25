@@ -2,16 +2,17 @@
 
 ## Overview:
 - Optimized and adjusted Google Play services.
-- Patching process is handled by a command script, which detects the default xml file location.
-- Currently support live install only, with API 23 minimum requirements.
+- Patching process is handled by a command script, which detects default file location and any conflicting modules.
+- API 23 or later is supported.
+- Magisk Live or Custom Recovery installations is supported.
 - 100 seconds pause script for Magisk Boot Service.
-- Does not guarantee for any modified GApps packages.
 
 ## Contents:
 - Base extensions   
 add-on: 1.0 (0815)   
-module: 1.8.0 (0903)   
-code: 180  
+cc: 1.0 (0925)   
+module: 1.8.1 (0925)   
+code: 181  
 
 ## Troubleshooting:
 - Command-line for fix delayed incoming messages issue:
@@ -34,7 +35,7 @@ There's a line written `Whitelist (except idle) system apps:` and if `com.google
 
 ## Credits:
 - [@topjohnwu](https://github.com/topjohnwu) / Magisk - Magisk Module Template
-- [@JumbomanXDA](https://t.me/JumbomanXDA) / Custom installation script
+- [@JumbomanXDA](https://github.com/JumbomanXDA) / Custom installation script
 
 ## Extras:
 - Donation: [PayPal](https://paypal.me/gloeyisk)
