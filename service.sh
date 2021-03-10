@@ -11,17 +11,23 @@ while [ "$(getprop sys.boot_completed)" != "1" ]; do
 	sleep 1
 done
 
-# Disable collective Device administrators
-pm disable com.google.android.gms/com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
-pm disable com.google.android.gms/com.google.android.gms.mdm.receivers.MdmDeviceAdminReceiver
 
-# Disable GMS and IMS run in startup and restart it on boot
-cmd appops set com.google.android.gms BOOT_COMPLETED ignore
-cmd appops set com.google.android.ims BOOT_COMPLETED ignore
+for i in $(ls /data/user/)
+do
 
-# Disable GMS and IMS run in startup and restart it on boot (custom permissions for Oxygen OS)
-cmd appops set com.google.android.gms AUTO_START ignore
-cmd appops set com.google.android.ims AUTO_START ignore
+	# Disable collective Device administrators
+	pm disable --user $i com.google.android.gms/com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
+	pm disable --user $i com.google.android.gms/com.google.android.gms.mdm.receivers.MdmDeviceAdminReceiver
+	
+	# Disable GMS and IMS run in startup and restart it on boot
+	cmd appops set --user $i com.google.android.gms BOOT_COMPLETED ignore
+	cmd appops set --user $i com.google.android.ims BOOT_COMPLETED ignore
+	
+	# Disable GMS and IMS run in startup and restart it on boot (custom permissions for Oxygen OS)
+	cmd appops set --user $i com.google.android.gms AUTO_START ignore
+	cmd appops set --user $i com.google.android.ims AUTO_START ignore
+
+done
 
 # Executing...
 # Done
