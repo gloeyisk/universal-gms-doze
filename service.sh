@@ -7,7 +7,9 @@
 #
 
 # Sleep before the script executed (in seconds)
-sleep 100
+while [ "$(getprop sys.boot_completed)" != "1" ]; do
+    sleep 1
+done
 
 # Disable collective Device administrators
 pm disable com.google.android.gms/com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
