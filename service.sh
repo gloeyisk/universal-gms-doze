@@ -8,7 +8,7 @@
 
 # Sleep before the script executed (in seconds)
 while [ "$(getprop sys.boot_completed)" != "1" ]; do
-    sleep 1
+	sleep 1
 done
 
 # Disable collective Device administrators
