@@ -9,10 +9,10 @@
 ## Contents:
 - Base extensions   
 cc: 1.1 (1115)   
-dd: 1.1 (1115)   
-gmsc: 1.1 (1115)   
-module: 1.8.2 (1115)   
-code: 182   
+dd: 1.2 (0610)   
+gmsc: 1.2 (0610)   
+module: 1.8.3 (0610)   
+code: 183   
 
 ## Troubleshooting:
 - Command-line for check optimization (with add-on installed):
@@ -43,7 +43,7 @@ There's a line written `Whitelist (except idle) system apps:` and if `com.google
 - [@JumbomanXDA](https://github.com/JumbomanXDA) / Custom installation script
 
 ## Extras:
-- Donation: [PayPal](https://paypal.me/gloeyisk)
-- Mirror Links: [Telegram](https://t.me/gldppc) - [Sourceforge](https://bit.ly/3bm3ozq)
+- Donation: [PayPal](https://paypal.me/gloeyisk) - [LiberaPay](https://liberapay.com/gloeyisk)
+- Mirror Links: [Telegram](https://t.me/gldppc) - [OneDrive](https://tinyurl.com/zuscpn4)
 - Source Code: [GitHub](https://github.com/gloeyisk/UniversalGMSDoze)
 - Support Thread: [XDA-Developers](https://forum.xda-developers.com/apps/magisk/module-universal-gms-doze-t3853710)
