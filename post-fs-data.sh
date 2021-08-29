@@ -1,10 +1,4 @@
-#!/system/bin/sh
-
-#
-# Universal GMS Doze by the
-# open source loving 'GL-DP' and all contributors;
-# Conflict Checker v1.1
-#
+#!/sbin/sh
 
 # Search and patch any conflicting modules (if present)
 # Patch conflicting XML files
@@ -13,6 +7,3 @@ for i in $conflict
  do
   sed -i '/allow-in-power-save package="com.google.android.gms"/d;/allow-in-data-usage-save package="com.google.android.gms"/d' $i
  done
-
-# Executing...
-# Done
