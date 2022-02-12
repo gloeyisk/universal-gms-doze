@@ -1,22 +1,26 @@
 # Universal GMS Doze
 
-## Overview:
-- Optimized and adjusted Google Play services.
-- Support API 23 or later.
-- Support Magisk Live or Custom Recovery installations.
+---
+## Overview
+- Patches Google Play services app and its background processes to be able using battery optimization
+- Support API 23 or later
+- Support Magisk Live or Custom Recovery installations
 
-## Contents:
-- Base extensions   
-module: 1.8.4 (0830)   
-code: 184   
+---
+## Download Links (Archive)
+- <img src="https://img.shields.io/badge/status:-available-green" />  
+ 
+  - [Drive](https://kutt.it/ai4UV4)   
+  - [Sourceforge](https://kutt.it/9sKLvQ)      
 
-## Troubleshooting:
+---
+## Troubleshootings
 - Command-line for check optimization (with add-on installed):
 ```
 > su
 > gmsc
 ```
-- Command-line for check optimization (general):   
+- Command-line for check optimization (in general):   
 There's a line written `Whitelist (except idle) system apps:` and if `com.google.android.gms` line does not exist it means Google Play services is optimized).
 ```
 > su
@@ -34,12 +38,13 @@ There's a line written `Whitelist (except idle) system apps:` and if `com.google
 > pm disable com.google.android.gms/com.google.android.gms.mdm.receivers.MdmDeviceAdminReceiver
 ```
 
-## Credits:
+---
+## Credits
 - [@topjohnwu](https://github.com/topjohnwu) / Magisk - Magisk Module Template
 - [@JumbomanXDA](https://github.com/JumbomanXDA) / Custom installation script
 
-## Extras:
-- Donation: [PayPal](https://paypal.me/gloeyisk) - [LiberaPay](https://liberapay.com/gloeyisk)
-- Mirror Links: [Telegram](https://t.me/gldppc) - [Index](https://kutt.it/Wt3rr4)
+---
+## Extras
+- Donations: [PayPal](https://paypal.me/gloeyisk) - [LiberaPay](https://liberapay.com/gloeyisk)
 - Source Code: [GitHub](https://github.com/gloeyisk/universal-gms-doze)
-- Support Thread: [XDA-Developers](https://forum.xda-developers.com/apps/magisk/module-universal-gms-doze-t3853710)
+- Support Thread: [XDA Developers](https://forum.xda-developers.com/apps/magisk/module-universal-gms-doze-t3853710)
