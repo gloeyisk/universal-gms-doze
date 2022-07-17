@@ -2,7 +2,7 @@
 
 ---
 ## Overview
-- Patches Google Play services app and its background processes to be able using battery optimization
+- Patches Google Play services app and its background processes to be able to use battery optimization
 - Support API 23 or later
 - Support Magisk Live or Custom Recovery installations
 
@@ -10,7 +10,7 @@
 ## Download Links (Archive)
 - <img src="https://img.shields.io/badge/status:-available-green" />  
  
-  - [Drive](https://kutt.it/ai4UV4)   
+  - [GitHub Releases](https://kutt.it/c7fx04)   
   - [Sourceforge](https://kutt.it/9sKLvQ)      
 
 ---

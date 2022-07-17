@@ -1,5 +1,9 @@
 ---
 ## Change Log:
+- 1.8.6   
+  - Added /system_ext detection support   
+  - Improved patching detections (Allow to revoke location permissions)
+
 - 1.8.5   
   - Added updateJson support   
   - Improved patching detections (XML files)

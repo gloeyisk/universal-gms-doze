@@ -1,0 +1,7 @@
+id=universal-gms-doze
+name=Universal GMS Doze
+version=1.8.6
+versionCode=186
+author=gloeyisk
+description=Patches Google Play services app and its background processes to be able to use battery optimizations.
+updateJson=https://raw.githubusercontent.com/gloeyisk/universal-gms-doze/master/module.json
