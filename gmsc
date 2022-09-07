@@ -1,17 +1,31 @@
 #!/system/bin/sh
 
-# Root check
-id=`id`; id=`echo ${id#*=}`; id=`echo ${id%%\(*}`; id=`echo ${id%% *}`
-if [ "$id" != "0" ] && [ "$id" != "root" ]; then
-echo "Superuser (su) rights is needed!"
-exit 1
-else
-# Command-line for check whether Google Play services is optimized or not
-# Run 'gmsc' with superuser rights
-gms=`dumpsys deviceidle whitelist | grep -o com.google.android.gms | head -n 1`	
-if [ "$gms" = "com.google.android.gms" ]; then
-echo "\033[0;31m Google Play services is Not Optimized \033[0m"
-else
-echo "\033[0;32m Google Play services is Optimized \033[0m"
-fi
-fi
+#
+# Universal GMS Doze by the
+# open source loving GL-DP and all contributors;
+# Patches Google Play services app and its background
+# processes to be able using battery optimization
+#
+
+ID="$(id -u)"
+NULL="/dev/null"
+GMS="com.google.android.gms"
+
+{ R="\e[1;31m" G="\e[1;32m" Y="\e[1;33m" N="\e[0m"; } 2> $NULL
+
+CHK_OPT() {
+    local OPT="$(dumpsys deviceidle whitelist |
+        awk -F',' "/$GMS/{print $2;exit}")"
+    [ -z $OPT ] && echo -e "$G $1 Optimized. $N" ||
+        echo -e "$R $1 Not Optimized. $N"
+}
+
+case $ID in
+    0)
+        CHK_OPT "Google Play services is"
+        ;;
+    *)
+        echo -e "$Y Superuser (su) rights is needed! $N"
+        exit 1
+        ;;
+esac

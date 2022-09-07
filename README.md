@@ -42,6 +42,7 @@ There's a line written `Whitelist (except idle) system apps:` and if `com.google
 ## Credits
 - [@topjohnwu](https://github.com/topjohnwu) / Magisk - Magisk Module Template
 - [@JumbomanXDA](https://github.com/JumbomanXDA) / Custom installation script
+- [@MrCarb0n](https://github.com/MrCarb0n) / Code rebase, overall code quality & syntax
 
 ---
 ## Extras

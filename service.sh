@@ -1,14 +1,36 @@
-#!/sbin/sh
+#!/data/adb/magisk/busybox sh
+set -o standalone
 
-# Sleep before the script executed (in seconds)
-sleep 110
+#
+# Universal GMS Doze by the
+# open source loving GL-DP and all contributors;
+# Patches Google Play services app and its background
+# processes to be able using battery optimization
+#
 
-# Multi User Support
-for i in $(ls /data/user/)
-do
-# Disable collective Device administrators
-pm disable com.google.android.gms/com.google.android.gms.auth.managed.admin.DeviceAdminReceiver
-pm disable com.google.android.gms/com.google.android.gms.mdm.receivers.MdmDeviceAdminReceiver
-done
+(   
+    # Wait until boot completed
+    until [ $(resetprop sys.boot_completed) -eq 1 ] &&
+        [ -d /sdcard ]; do
+        sleep 60
+    done
 
-exit 0
+    # GMS components
+    GMS="com.google.android.gms"
+    GC1="auth.managed.admin.DeviceAdminReceiver"
+    GC2="mdm.receivers.MdmDeviceAdminReceiver"
+    GC3="chimera.GmsIntentOperationService"
+    NLL="/dev/null"
+
+    # Disable collective device administrators
+    for U in $(ls /data/user); do
+        for C in $GC1 $GC2 $GC3; do
+            pm disable --user $U "$GMS/$GMS.$C" &> $NLL
+        done
+    done
+
+    # Add GMS to battery optimization
+    dumpsys deviceidle whitelist -com.google.android.gms &> $NLL
+
+    exit 0
+)
