@@ -5,7 +5,7 @@ set -o standalone
 # Universal GMS Doze by the
 # open source loving GL-DP and all contributors;
 # Patches Google Play services app and its background
-# processes to be able using battery optimization
+# processes to be able to use battery optimization
 #
 
 # Search and patch any conflicting modules (if present)

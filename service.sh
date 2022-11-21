@@ -5,14 +5,14 @@ set -o standalone
 # Universal GMS Doze by the
 # open source loving GL-DP and all contributors;
 # Patches Google Play services app and its background
-# processes to be able using battery optimization
+# processes to be able to use battery optimization
 #
 
 (   
     # Wait until boot completed
     until [ $(resetprop sys.boot_completed) -eq 1 ] &&
         [ -d /sdcard ]; do
-        sleep 60
+        sleep 100
     done
 
     # GMS components

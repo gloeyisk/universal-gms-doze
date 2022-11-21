@@ -15,7 +15,7 @@
 
 ---
 ## Troubleshootings
-- Command-line for check optimization (with add-on installed):
+- Command-line for check optimization (with module installed):
 ```
 > su
 > gmsc
@@ -26,13 +26,14 @@ There's a line written `Whitelist (except idle) system apps:` and if `com.google
 > su
 > dumpsys deviceidle
 ```
-- Command-line for fix delayed incoming messages issue:
+- Command-line for fix delayed incoming messages issue:   
+If the issue still persist, put the app to Not Optimized battery usage.
 ```
 > su
 > cd /data/data
 > find . -type f -name '*gms*' -delete
 ```
-- Command-line for disable Find My Device:
+- Command-line for disable Find My Device (optional):
 ```
 > su
 > pm disable com.google.android.gms/com.google.android.gms.mdm.receivers.MdmDeviceAdminReceiver
@@ -46,6 +47,6 @@ There's a line written `Whitelist (except idle) system apps:` and if `com.google
 
 ---
 ## Extras
-- Donations: [PayPal](https://paypal.me/gloeyisk) - [LiberaPay](https://liberapay.com/gloeyisk)
+- Donations: [PayPal](https://paypal.me/gloeyisk) - [LiberaPay](https://liberapay.com/gloeyisk) - [Ko-fi](https://ko-fi.com/gloeyisk)
 - Source Code: [GitHub](https://github.com/gloeyisk/universal-gms-doze)
 - Support Thread: [XDA Developers](https://forum.xda-developers.com/apps/magisk/module-universal-gms-doze-t3853710)

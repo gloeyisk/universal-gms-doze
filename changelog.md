@@ -1,5 +1,11 @@
 ---
 ## Change Log:
+- 1.8.8   
+  - A long-awaited hotfix
+  - Addresses script that caused patching XML gone wrong
+  - Raised Magisk Boot Service to 100 seconds
+
+
 - 1.8.7   
   - Android 13 support
   - Added GMS to battery optimization and disabled another components
@@ -12,16 +18,20 @@
   - Revived overall code quality and syntax
   - Rewrite GMS state checker bin
 
+
 - 1.8.6   
   - Added /system_ext detection support
   - Improved patching detections (Allow to revoke location permissions)
+
 
 - 1.8.5   
   - Added updateJson support
   - Improved patching detections (XML files)
 
+
 - 1.8.4   
   - Removed redundant script (GMS: Stay with disabling Find My Device only)
+
 
 - 1.8.3   
   - Android 12 support
@@ -29,6 +39,7 @@
   - Multi-User support
   - Set ignore for GMS and IMS WRITE_SETTINGS
   - Minor improvements     
+
 
 - 1.8.2   
   - Android 11 support
@@ -39,10 +50,12 @@
   - Set ignore for GMS and IMS AUTO_START (custom permissions for Oxygen OS)
   - Updated template
 
+
 - 1.8.1   
   - Integrated custom recovery installation
   - Added boot logic for search and patch any conflicting modules (if present)
   - Whitelisted IMS and Turbo (this should fixed location crash issue in MIUI)
+
 
 - 1.8.0   
   - Initial re-release

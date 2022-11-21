@@ -7,7 +7,7 @@ set -x
 # Universal GMS Doze by the
 # open source loving GL-DP and all contributors;
 # Patches Google Play services app and its background
-# processes to be able using battery optimization
+# processes to be able to use battery optimization
 #
 
 # Checking for installation environment
@@ -59,13 +59,13 @@ PATCH_SX() {
         if [ -d $MODPATH/$P ]; then
             ui_print "- Moving files to module dir"
             mkdir -p $MODPATH/system/$P
-            mv -f $MODPATH/$P $MODPATH/system/$P
+            mv -f $MODPATH/$P $MODPATH/system/
         fi
     done
 }
 
 # Search and patch any conflicting modules (if present)
-# Search conflicting xml files
+# Search conflicting XML files
 MOD_XML="$(
     MXML="$(find /data/adb/* -type f -iname "*.xml" -print)"
     for M in $MXML; do
@@ -84,7 +84,7 @@ PATCH_MX() {
     done
 }
 
-# Find and patch XMLs
+# Find and patch conflicting XML
 PATCH_SX && PATCH_MX
 
 # Additional add-on for check gms status
