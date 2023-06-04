@@ -2,9 +2,8 @@
 
 #
 # Universal GMS Doze by the
-# open source loving GL-DP and all contributors;
-# Patches Google Play services app and its background
-# processes to be able to use battery optimization
+# open-source loving GL-DP and all contributors;
+# Patches Google Play services app and certain processes/services to be able to use battery optimization
 #
 
 ID="$(id -u)"
@@ -14,18 +13,18 @@ GMS="com.google.android.gms"
 { R="\e[1;31m" G="\e[1;32m" Y="\e[1;33m" N="\e[0m"; } 2> $NULL
 
 CHK_OPT() {
-    local OPT="$(dumpsys deviceidle whitelist |
-        awk -F',' "/$GMS/{print $2;exit}")"
-    [ -z $OPT ] && echo -e "$G $1 Optimized. $N" ||
-        echo -e "$R $1 Not Optimized. $N"
+local OPT="$(dumpsys deviceidle whitelist |
+awk -F',' "/$GMS/{print $2;exit}")"
+[ -z $OPT ] && echo -e "$G $1 Optimized. $N" ||
+echo -e "$R $1 Not Optimized. $N"
 }
 
 case $ID in
-    0)
-        CHK_OPT "Google Play services is"
-        ;;
-    *)
-        echo -e "$Y Superuser (su) rights is needed! $N"
-        exit 1
-        ;;
+0)
+CHK_OPT "Google Play services is"
+;;
+*)
+echo -e "$Y Superuser (su) rights is needed! $N"
+exit 1
+;;
 esac
