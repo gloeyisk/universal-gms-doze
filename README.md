@@ -1,47 +1,42 @@
-# Universal GMS Doze
+# Universal GMS Doze Fix
 
-## Overview
-- Patches Google Play services app and certain processes/services to be able to use battery optimization
-- Support API 23 or later
+**中文文档**|[English](README_EN.md)
 
-## Download Links (Archive)
-- [GitHub Releases](https://kutt.it/3FfNzX)
-- [Mediafire](https://app.mediafire.com/16j39nr5uxi4l)
-- [MEGA](https://kutt.it/bE35Ld)
-- [SourceForge](https://kutt.it/69oMi9)
+## 概述
+ - 修复了Universal GMS Doze模块卸载不干净的问题
+ - 修补Google Play服务应用程序和某些流程/服务，以便能够使用电池优化
+ - 支持API 23或更高版本
 
-## Troubleshootings
-- Command-line for check optimization (with module installed):
-```
-> su
-> gmsc
-```
-- Command-line for check optimization (in general):   
-There's a line written `Whitelist (except idle) system apps:` and if `com.google.android.gms` line does not exist it means Google Play services is optimized).
-```
-> su
-> dumpsys deviceidle
-```
-- Command-line for fix delayed incoming messages issue:   
-If the issue still persist, move the app to Not Optimized battery usage.
-```
-> su
-> cd /data/data
-> find . -type f -name '*gms*' -delete
-```
-- Command-line for disable Find My Device (optional):
-```
-> su
-> pm disable com.google.android.gms/com.google.android.gms.mdm.receivers.MdmDeviceAdminReceiver
-```
+## 故障排除
+ - 检查优化的命令（已安装模块）：
+ ``` 
+ > su 
+ > gmsc 
+ ``` 
+ - 检查优化的命令（一般情况下）：
+有一行写着 `Whitelist (except idle) system apps:`，如果`com.google.android.gms` 行不存在，则意味着Google Play服务已优化
 
-## Credits
-- [@topjohnwu](https://github.com/topjohnwu)   
-Magisk - Magisk Module Template
-- [@MrCarb0n](https://github.com/MrCarb0n)   
-Script / syntax helper
-
-## Extras
-- Donations: [PayPal](https://paypal.me/gloeyisk) - [LiberaPay](https://liberapay.com/gloeyisk) - [Ko-fi](https://ko-fi.com/gloeyisk)
-- Source Code: [GitHub](https://github.com/gloeyisk/universal-gms-doze)
-- Support Thread: [XDA Developers](https://forum.xda-developers.com/apps/magisk/module-universal-gms-doze-t3853710)
+ ``` 
+ > su 
+ > dumpsys deviceidle 
+ ``` 
+ - 用于修复延迟传入消息问题的命令行：
+如果问题仍然存在，请将应用程序移出电池优化
+ ``` 
+ > su 
+ > cd /data/data 
+ > find . -type f -name '*gms*' -delete 
+ ``` 
+ - 用于禁用查找我的设备的命令(可选)： 
+ ``` 
+ > su 
+ > pm disable com.google.android.gms/com.google.android.gms.mdm.receivers.MdmDeviceAdminReceiver 
+ ``` 
+  
+## 贡献者
+ - [@topjohnwu](https://github.com/topjohnwu)    
+ Magisk - Magisk Module Template 
+ - [@MrCarb0n](https://github.com/MrCarb0n)    
+ Script / syntax helper
+ - [@gloeyisk](https://github.com/gloeyisk)
+ Universal Gms Doze
