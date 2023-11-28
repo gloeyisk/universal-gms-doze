@@ -1,4 +1,9 @@
 ## Change Log:
+- 1.9.1   
+Improved installation (Magisk Live and KernelSU)   
+Fixed root method detections   
+Fixed uninstaller script   
+
 - 1.9.0   
 Android 14 support      
 Fixed synchronization for Location Sharing and Play Games   

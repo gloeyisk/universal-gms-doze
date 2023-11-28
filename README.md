@@ -3,6 +3,7 @@
 ## Overview
 - Patches Google Play services app and certain processes/services to be able to use battery optimization
 - Support API 23 or later
+- Support Magisk and KernelSU
 
 ## Download Links (Archive)
 - [GitHub Releases](https://kutt.it/3FfNzX)
@@ -36,10 +37,8 @@ If the issue still persist, move the app to Not Optimized battery usage.
 ```
 
 ## Credits
-- [@topjohnwu](https://github.com/topjohnwu)   
-Magisk - Magisk Module Template
-- [@MrCarb0n](https://github.com/MrCarb0n)   
-Script / syntax helper
+- topjohnwu / Magisk - Magisk Module Template
+- JumbomanXDA, MrCarb0n / Script fixer and helper
 
 ## Extras
 - Donations: [PayPal](https://paypal.me/gloeyisk) - [LiberaPay](https://liberapay.com/gloeyisk) - [Ko-fi](https://ko-fi.com/gloeyisk)
