@@ -9,25 +9,26 @@ set -x
 # Patches Google Play services app and certain processes/services to be able to use battery optimization
 #
 
-# Check root environment
-VER=`grep_prop version $MODPATH/module.prop`
-VERCODE=`grep_prop versionCode $MODPATH/module.prop`
-ui_print "  ID: $MODID"
-ui_print "  Version: $VER"
-ui_print "  VersionCode: $VERCODE"
-if [ "$KSU" == true ]; then
-ui_print "  KSUVersion: $KSU_VER"
-ui_print "  KSUVersionCode: $KSU_VER_CODE"
-ui_print "  KSUKernelVersionCode: $KSU_KERNEL_VER_CODE"
-else
-ui_print "  MagiskVersion: $MAGISK_VER"
-ui_print "  MagiskVersionCode: $MAGISK_VER_CODE"
+# Check root implementation
+ui_print "- Checking root implementation"
+if [ "$BOOTMODE" ] && [ "$KSU" ]; then
+ui_print "- Installing from KernelSU app"
+ui_print "   KernelSU version: $KSU_KERNEL_VER_CODE (kernel) + $KSU_VER_CODE (ksud)"
+if [ "$(which magisk)" ]; then
+ui_print "   Multiple root implementation is NOT supported"
+abort    "   Aborting!"
 fi
-ui_print " "
+elif [ "$BOOTMODE" ] && [ "$MAGISK_VER_CODE" ]; then
+ui_print "- Installing from Magisk app"
+else
+ui_print "   Installation from recovery is NOT supported"
+ui_print "   Please install from Magisk / KernelSU app"
+abort    "   Aborting!"
+fi
 
 # Check Android API
 [ $API -ge 23 ] ||
- abort "- Unsupported API version: $API"
+abort "- Unsupported API version: $API"
 
 # Patch the XML and place the modified one to the original directory
 ui_print "- Patching XML files"
@@ -40,7 +41,7 @@ NULL="/dev/null"
 ui_print "- Searching default XML files"
 SYS_XML="$(
 SXML="$(find /system_ext/* /system/* /product/* \
-/vendor/* -type f -iname '*.xml' -print)"
+/vendor/* /india/* /my_bigball/* -type f -iname '*.xml' -print)"
 for S in $SXML; do
 if grep -qE "$STR1|$STR2" $ROOT$S 2> $NULL; then
 echo "$S"
@@ -52,14 +53,14 @@ PATCH_SX() {
 for SX in $SYS_XML; do
 mkdir -p "$(dirname $MODPATH$SX)"
 cp -af $ROOT$SX $MODPATH$SX
- ui_print "  Patching: $SX"
+ui_print "  Patching: $SX"
 sed -i "/$STR1/d;/$STR2/d" $MODPATH/$SX
 done
 
 # Merge patched files under /system dir
 for P in product vendor; do
 if [ -d $MODPATH/$P ]; then
- ui_print "- Moving files to module directory"
+ui_print "- Moving files to module directory"
 mkdir -p $MODPATH/system/$P
 mv -f $MODPATH/$P $MODPATH/system/
 fi
@@ -78,10 +79,10 @@ done
 )"
 
 PATCH_MX() {
- ui_print "- Searching conflicting XML"
+ui_print "- Searching conflicting XML"
 for MX in $MOD_XML; do
 MOD="$(echo "$MX" | awk -F'/' '{print $5}')"
- ui_print "  $MOD: $MX"
+ui_print "  $MOD: $MX"
 sed -i "/$STR1/d;/$STR2/d" $MX
 done
 }
@@ -91,13 +92,18 @@ PATCH_SX && PATCH_MX
 
 # Additional add-on for check gms status
 ADDON() {
- ui_print "- Inflating add-on file"
+ui_print "- Inflating add-on file"
 mkdir -p $MODPATH/system/bin
 mv -f $MODPATH/gmsc $MODPATH/system/bin/gmsc
 }
 
+# Clear old GMS data on first install (should fix delayed incoming messages)
+cd /data/data
+find . -type f -name '*gms*' -delete
+ui_print "- Clearing old GMS data"
+
 FINALIZE() {
- ui_print "- Finalizing installation"
+ui_print "- Finalizing installation"
 
 # Clean up
  ui_print "  Cleaning obsolete files"
@@ -109,7 +115,7 @@ find $MODPATH/* -maxdepth 0 \
 -exec rm -rf {} \;
 
 # Settings dir and file permission
- ui_print "  Settings permissions"
+ui_print "  Settings permissions"
 set_perm_recursive $MODPATH 0 0 0755 0755
 set_perm $MODPATH/system/bin/gmsc 0 2000 0755
 }

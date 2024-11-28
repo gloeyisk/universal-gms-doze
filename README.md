@@ -3,7 +3,7 @@
 ## Overview
 - Patches Google Play services app and certain processes/services to be able to use battery optimization
 - Support API 23 or later
-- Support Magisk and KernelSU
+- Support Magisk, KernelSU, and APatch root implementations
 
 ## Download Links (Archive)
 - [GitHub Releases](https://kutt.it/3FfNzX)

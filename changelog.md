@@ -1,4 +1,10 @@
 ## Change Log:
+- 1.9.2   
+Android 15 support   
+Improved root implementations (Support Magisk / KernelSU / APatch)   
+Improved XML dir/path detections (73Sydney)   
+Clear old GMS data on first install   
+
 - 1.9.1   
 Improved installation (Magisk Live and KernelSU)   
 Fixed root method detections   
